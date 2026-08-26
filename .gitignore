@@ -9,6 +9,9 @@ build/
 *.iml
 .DS_Store
 android/.gradle/
+android/key.properties
+android/app/*.jks
+android/app/*.keystore
 ios/Pods/
 macos/Pods/
 

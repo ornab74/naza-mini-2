@@ -30,6 +30,14 @@ jobs:
           channel: stable
           cache: true
 
+      - name: Install Linux native build dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y clang cmake ninja-build pkg-config libgtk-3-dev build-essential git binutils python3
+
+      - name: Prepare Linux native runtime before tests
+        run: ./tool/prepare_linux_llamadart_native.sh
+
       - name: Get dependencies
         run: flutter pub get
 
@@ -46,11 +54,13 @@ jobs:
       fail-fast: false
       matrix:
         include:
-          - name: Android APK
+          - name: Android App Bundle and APK
             os: ubuntu-latest
             platform: android
-            build_command: flutter build apk --release
-            artifact: build/app/outputs/flutter-apk/app-release.apk
+            build_command: flutter build appbundle --release && flutter build apk --release
+            artifact: |
+              build/app/outputs/bundle/release/app-release.aab
+              build/app/outputs/flutter-apk/app-release.apk
           - name: Linux x64
             os: ubuntu-latest
             platform: linux
@@ -110,6 +120,76 @@ jobs:
             --platforms=${{ matrix.platform }} \
             --project-name=naza_llamadart_gui \
             --org=com.naza .
+
+      - name: Configure Android release signing
+        if: matrix.platform == 'android'
+        shell: bash
+        env:
+          ANDROID_KEYSTORE_BASE64: ${{ secrets.ANDROID_KEYSTORE_BASE64 }}
+          ANDROID_KEY_ALIAS: ${{ secrets.ANDROID_KEY_ALIAS }}
+          ANDROID_KEY_PASSWORD: ${{ secrets.ANDROID_KEY_PASSWORD }}
+          ANDROID_STORE_PASSWORD: ${{ secrets.ANDROID_STORE_PASSWORD }}
+        run: |
+          if [[ -z "${ANDROID_KEYSTORE_BASE64:-}" ]]; then
+            echo "::warning::Android signing secrets are not configured; using Flutter's debug signing for this CI artifact."
+            exit 0
+          fi
+          : "${ANDROID_KEY_ALIAS:?ANDROID_KEY_ALIAS is required}"
+          : "${ANDROID_KEY_PASSWORD:?ANDROID_KEY_PASSWORD is required}"
+          : "${ANDROID_STORE_PASSWORD:?ANDROID_STORE_PASSWORD is required}"
+
+          printf '%s' "$ANDROID_KEYSTORE_BASE64" | base64 --decode > android/app/naza-upload-key.jks
+          keytool -list -keystore android/app/naza-upload-key.jks \
+            -storepass "$ANDROID_STORE_PASSWORD" \
+            -alias "$ANDROID_KEY_ALIAS" >/dev/null
+
+          printf '%s\n' \
+            "storePassword=$ANDROID_STORE_PASSWORD" \
+            "keyPassword=$ANDROID_KEY_PASSWORD" \
+            "keyAlias=$ANDROID_KEY_ALIAS" \
+            "storeFile=naza-upload-key.jks" > android/key.properties
+
+          python3 - <<'PY'
+          from pathlib import Path
+
+          path = Path("android/app/build.gradle.kts")
+          source = path.read_text()
+          if "keystorePropertiesFile" not in source:
+              source = '''import java.io.FileInputStream
+          import java.util.Properties
+
+          val keystorePropertiesFile = rootProject.file("key.properties")
+          val keystoreProperties = Properties()
+          if (keystorePropertiesFile.exists()) {
+              keystoreProperties.load(FileInputStream(keystorePropertiesFile))
+          }
+
+          ''' + source
+              source = source.replace(
+                  "    buildTypes {",
+                  '''    signingConfigs {
+                  if (keystorePropertiesFile.exists()) {
+                      create("release") {
+                          keyAlias = keystoreProperties["keyAlias"] as String
+                          keyPassword = keystoreProperties["keyPassword"] as String
+                          storeFile = file(keystoreProperties["storeFile"] as String)
+                          storePassword = keystoreProperties["storePassword"] as String
+                      }
+                  }
+              }
+
+              buildTypes {''',
+                  1,
+              )
+              source = source.replace(
+                  'signingConfig = signingConfigs.getByName("debug")',
+                  'signingConfig = if (keystorePropertiesFile.exists()) signingConfigs.getByName("release") else signingConfigs.getByName("debug")',
+                  1,
+              )
+              path.write_text(source)
+          PY
+
+          grep -q 'signingConfigs' android/app/build.gradle.kts
 
       - name: Select native runtime source
         shell: bash
