@@ -51,7 +51,10 @@ class GlassPanel extends StatelessWidget {
     // Do not isolate live controls in repaint boundaries on Linux software
     // rendering. Some GTK/software-renderer combinations fail to invalidate
     // an isolated layer until the window receives an expose event (such as a
-    // resize), making controller-driven updates appear frozen.
+    // resize), making controller-driven updates appear frozen. Avoiding a
+    // rounded clip on the same path also avoids a large software clip being
+    // rebuilt while Crostini is processing a configure/resize event.
+    if (linux) return panel;
     return ClipRRect(
       borderRadius: BorderRadius.circular(radius),
       clipBehavior: Clip.hardEdge,
@@ -108,10 +111,9 @@ class StatusPill extends StatelessWidget {
               label,
               maxLines: 1,
               overflow: TextOverflow.ellipsis,
-              style: Theme.of(context)
-                  .textTheme
-                  .labelMedium
-                  ?.copyWith(color: Colors.white70),
+              style: Theme.of(
+                context,
+              ).textTheme.labelMedium?.copyWith(color: Colors.white70),
             ),
           ),
         ],
@@ -121,11 +123,7 @@ class StatusPill extends StatelessWidget {
 }
 
 class SectionTitle extends StatelessWidget {
-  const SectionTitle({
-    super.key,
-    required this.title,
-    required this.subtitle,
-  });
+  const SectionTitle({super.key, required this.title, required this.subtitle});
   final String title;
   final String subtitle;
 
@@ -139,22 +137,22 @@ class SectionTitle extends StatelessWidget {
           title,
           maxLines: 1,
           overflow: TextOverflow.ellipsis,
-          style: (compact
-                  ? Theme.of(context).textTheme.headlineSmall
-                  : Theme.of(context).textTheme.headlineMedium)
-              ?.copyWith(
-            fontWeight: FontWeight.w800,
-            letterSpacing: compact ? -0.3 : -0.7,
-          ),
+          style:
+              (compact
+                      ? Theme.of(context).textTheme.headlineSmall
+                      : Theme.of(context).textTheme.headlineMedium)
+                  ?.copyWith(
+                    fontWeight: FontWeight.w800,
+                    letterSpacing: compact ? -0.3 : -0.7,
+                  ),
         ),
         if (!compact) ...[
           const SizedBox(height: 6),
           Text(
             subtitle,
-            style: Theme.of(context)
-                .textTheme
-                .bodyMedium
-                ?.copyWith(color: Colors.white60),
+            style: Theme.of(
+              context,
+            ).textTheme.bodyMedium?.copyWith(color: Colors.white60),
           ),
         ],
       ],

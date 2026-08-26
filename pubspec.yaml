@@ -18,6 +18,9 @@ dependencies:
   cryptography_flutter: ^2.3.4
   sqlite3: ^3.5.0
 
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
 
 # Linux/Crostini compatibility:
 # LlamaDart 0.8.17 expects the b10075 native ABI. The preparation script

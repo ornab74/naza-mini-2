@@ -80,6 +80,7 @@ The built-in Pinata mirror is enabled by default and may be overridden in Model 
 - Scanner controls use a responsive card with CHUNKD as the default mode.
 - Result metadata wraps safely and long defense/colorwheel strings no longer force horizontal layout.
 - Raw model output is preserved and displayed exactly as generated; classification is derived separately from that raw output.
+- Crostini resize hardening uses a normal GTK window (no client-side header bar), XWayland by default, GTK non-GL mode, and no Linux rounded software clips. Set `NAZA_GDK_BACKEND=wayland` before `./run_linux.sh` only if your container's Wayland path is more stable.
 
 ## Performance verification
 
@@ -105,8 +106,13 @@ sudo apt install -y clang cmake ninja-build pkg-config libgtk-3-dev build-essent
 
 flutter clean
 flutter pub get
-flutter run -d linux
+./run_linux.sh
 ```
+
+`run_linux.sh` is the recommended Crostini launcher. It enables Flutter
+software rendering, disables GTK GL, and uses the resize-safe XWayland path.
+To try the container's native Wayland path instead, run
+`NAZA_GDK_BACKEND=wayland ./run_linux.sh`.
 
 The first `flutter run` prepares the compatible local llama.cpp runtime before Flutter's native-assets step. Later builds reuse it.
 
@@ -135,7 +141,7 @@ rm -rf native-bundles/linux-x64 third_party/llamadart-native-b10075
 ./tool/prepare_linux_llamadart_native.sh
 flutter clean
 flutter pub get
-flutter run -d linux
+./run_linux.sh
 ```
 
 

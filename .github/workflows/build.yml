@@ -34,7 +34,10 @@ jobs:
         run: flutter pub get
 
       - name: Analyze application sources
-        run: flutter analyze lib
+        run: flutter analyze lib test
+
+      - name: Run widget smoke test
+        run: flutter test
 
   build:
     name: Build ${{ matrix.name }}

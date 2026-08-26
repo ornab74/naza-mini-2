@@ -26,7 +26,12 @@ flutter pub get
 # Crostini exposes both Wayland and XWayland. Flutter's GTK runner is more
 # reliable here through XWayland, particularly for software-rendered damage
 # and pointer presentation.
-export GDK_BACKEND=x11
+export GDK_BACKEND="${NAZA_GDK_BACKEND:-x11}"
+# Keep GTK itself on its non-GL path too. Flutter is already forced to Skia
+# software rendering below; this prevents XWayland/GTK GL context teardown
+# from being involved when the Chromebook window is resized.
+export GDK_GL=disable
+export LIBGL_ALWAYS_SOFTWARE=1
 # The target environment has unreliable/absent OpenGL acceleration. Keep the
 # renderer deterministic so input handling is not affected by GPU failures.
 exec flutter run -d linux --enable-software-rendering --no-enable-impeller "$@"
