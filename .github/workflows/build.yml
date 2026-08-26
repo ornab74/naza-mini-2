@@ -1,0 +1,134 @@
+name: Build NAZA Road Scanner
+
+on:
+  push:
+    branches: [main, master]
+    tags: ['v*']
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+env:
+  FLUTTER_VERSION: '3.44.4'
+
+jobs:
+  analyze:
+    name: Analyze Dart and Flutter sources
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out source
+        uses: actions/checkout@v4
+        with:
+          submodules: recursive
+
+      - name: Set up Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          flutter-version: ${{ env.FLUTTER_VERSION }}
+          channel: stable
+          cache: true
+
+      - name: Get dependencies
+        run: flutter pub get
+
+      - name: Analyze application sources
+        run: flutter analyze lib
+
+  build:
+    name: Build ${{ matrix.name }}
+    needs: analyze
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - name: Android APK
+            os: ubuntu-latest
+            platform: android
+            build_command: flutter build apk --release
+            artifact: build/app/outputs/flutter-apk/app-release.apk
+          - name: Linux x64
+            os: ubuntu-latest
+            platform: linux
+            build_command: flutter build linux --release
+            artifact: build/linux/x64/release/bundle
+          - name: Windows x64
+            os: windows-latest
+            platform: windows
+            build_command: flutter build windows --release
+            artifact: build/windows/x64/runner/Release
+          - name: macOS
+            os: macos-latest
+            platform: macos
+            build_command: flutter build macos --release
+            artifact: build/macos/Build/Products/Release
+          - name: iOS unsigned
+            os: macos-latest
+            platform: ios
+            build_command: flutter build ios --release --no-codesign
+            artifact: build/ios/iphoneos/Runner.app
+
+    runs-on: ${{ matrix.os }}
+    steps:
+      - name: Check out source
+        uses: actions/checkout@v4
+        with:
+          submodules: recursive
+
+      - name: Set up Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          flutter-version: ${{ env.FLUTTER_VERSION }}
+          channel: stable
+          cache: true
+
+      - name: Install Linux build dependencies
+        if: matrix.platform == 'linux'
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y clang cmake ninja-build pkg-config libgtk-3-dev build-essential git binutils python3
+
+      - name: Prepare Crostini-compatible Linux runtime
+        if: matrix.platform == 'linux'
+        run: ./tool/prepare_linux_llamadart_native.sh
+
+      - name: Set up Java for Android
+        if: matrix.platform == 'android'
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+
+      - name: Generate missing Flutter platform host
+        shell: bash
+        run: |
+          flutter create --no-pub \
+            --platforms=${{ matrix.platform }} \
+            --project-name=naza_llamadart_gui \
+            --org=com.naza .
+
+      - name: Select native runtime source
+        shell: bash
+        run: |
+          if [[ "${{ matrix.platform }}" != "linux" ]]; then
+            # The checked-in local bundle is required for Debian/Crostini
+            # GLIBC compatibility. Other targets use LlamaDart's published
+            # native bundle for their platform and architecture.
+            sed -i.bak '/llamadart_native_path:/d' pubspec.yaml
+            rm -f pubspec.yaml.bak
+          fi
+
+      - name: Get dependencies
+        run: flutter pub get
+
+      - name: Build release artifact
+        shell: bash
+        run: ${{ matrix.build_command }}
+
+      - name: Upload release artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: naza-${{ matrix.platform }}
+          path: ${{ matrix.artifact }}
+          if-no-files-found: error

@@ -1,0 +1,349 @@
+[  +40 ms] Unable to locate an Android SDK.
+[  +11 ms] executing: uname -m
+[   +6 ms] Exit code 0 from: uname -m
+[   +1 ms] x86_64
+[  +19 ms] Artifact Instance of 'MaterialFonts' is not required, skipping update.
+[        ] Artifact Instance of 'GradleWrapper' is not required, skipping update.
+[        ] Artifact Instance of 'AndroidGenSnapshotArtifacts' is not required, skipping update.
+[        ] Artifact Instance of 'AndroidInternalBuildArtifacts' is not required, skipping update.
+[        ] Artifact Instance of 'IOSEngineArtifacts' is not required, skipping update.
+[        ] Artifact Instance of 'FlutterWebSdk' is not required, skipping update.
+[   +1 ms] Artifact Instance of 'LegacyCanvasKitRemover' is not required, skipping update.
+[        ] Artifact Instance of 'FlutterSdk' is not required, skipping update.
+[        ] Artifact Instance of 'WindowsEngineArtifacts' is not required, skipping update.
+[        ] Artifact Instance of 'MacOSEngineArtifacts' is not required, skipping update.
+[        ] Artifact Instance of 'LinuxEngineArtifacts' is not required, skipping update.
+[        ] Artifact Instance of 'LinuxFuchsiaSDKArtifacts' is not required, skipping update.
+[        ] Artifact Instance of 'MacOSFuchsiaSDKArtifacts' is not required, skipping update.
+[        ] Artifact Instance of 'FlutterRunnerSDKArtifacts' is not required, skipping update.
+[        ] Artifact Instance of 'FlutterRunnerDebugSymbols' is not required, skipping update.
+[        ] Artifact Instance of 'IosUsbArtifacts' is not required, skipping update.
+[        ] Artifact Instance of 'IosUsbArtifacts' is not required, skipping update.
+[        ] Artifact Instance of 'IosUsbArtifacts' is not required, skipping update.
+[        ] Artifact Instance of 'IosUsbArtifacts' is not required, skipping update.
+[        ] Artifact Instance of 'IosUsbArtifacts' is not required, skipping update.
+[        ] Artifact Instance of 'IosUsbArtifacts' is not required, skipping update.
+[        ] Artifact Instance of 'FontSubsetArtifacts' is not required, skipping update.
+[        ] Artifact Instance of 'PubDependencies' is not required, skipping update.
+[   +2 ms] executing: [/home/user/nazahealth/flutter/] git -c log.showSignature=false log HEAD -n 1 --pretty=format:%ad --date=iso
+[   +6 ms] Exit code 0 from: git -c log.showSignature=false log HEAD -n 1 --pretty=format:%ad --date=iso
+[        ] 2026-06-24 11:07:06 -0700
+[  +34 ms] Artifact Instance of 'AndroidGenSnapshotArtifacts' is not required, skipping update.
+[        ] Artifact Instance of 'AndroidInternalBuildArtifacts' is not required, skipping update.
+[        ] Artifact Instance of 'IOSEngineArtifacts' is not required, skipping update.
+[        ] Artifact Instance of 'FlutterWebSdk' is not required, skipping update.
+[        ] Artifact Instance of 'FlutterEngineStamp' is not required, skipping update.
+[        ] Artifact Instance of 'LegacyCanvasKitRemover' is not required, skipping update.
+[   +2 ms] Artifact Instance of 'WindowsEngineArtifacts' is not required, skipping update.
+[        ] Artifact Instance of 'MacOSEngineArtifacts' is not required, skipping update.
+[        ] Artifact Instance of 'LinuxEngineArtifacts' is not required, skipping update.
+[        ] Artifact Instance of 'LinuxFuchsiaSDKArtifacts' is not required, skipping update.
+[        ] Artifact Instance of 'MacOSFuchsiaSDKArtifacts' is not required, skipping update.
+[        ] Artifact Instance of 'FlutterRunnerSDKArtifacts' is not required, skipping update.
+[        ] Artifact Instance of 'FlutterRunnerDebugSymbols' is not required, skipping update.
+[  +74 ms] Artifact Instance of 'AndroidGenSnapshotArtifacts' is not required, skipping update.
+[        ] Artifact Instance of 'AndroidInternalBuildArtifacts' is not required, skipping update.
+[        ] Artifact Instance of 'IOSEngineArtifacts' is not required, skipping update.
+[        ] Artifact Instance of 'FlutterWebSdk' is not required, skipping update.
+[        ] Artifact Instance of 'FlutterEngineStamp' is not required, skipping update.
+[        ] Artifact Instance of 'LegacyCanvasKitRemover' is not required, skipping update.
+[        ] Artifact Instance of 'WindowsEngineArtifacts' is not required, skipping update.
+[        ] Artifact Instance of 'MacOSEngineArtifacts' is not required, skipping update.
+[   +2 ms] Artifact Instance of 'LinuxFuchsiaSDKArtifacts' is not required, skipping update.
+[        ] Artifact Instance of 'MacOSFuchsiaSDKArtifacts' is not required, skipping update.
+[        ] Artifact Instance of 'FlutterRunnerSDKArtifacts' is not required, skipping update.
+[        ] Artifact Instance of 'FlutterRunnerDebugSymbols' is not required, skipping update.
+[  +33 ms] Skipping pub get: version match.
+[  +73 ms] Found plugin path_provider at /home/user/.pub-cache/hosted/pub.dev/path_provider-2.1.6/
+[   +7 ms] Found plugin path_provider_windows at /home/user/.pub-cache/hosted/pub.dev/path_provider_windows-2.3.0/
+[  +18 ms] Found plugin path_provider_linux at /home/user/.pub-cache/hosted/pub.dev/path_provider_linux-2.2.2/
+[   +6 ms] Found plugin path_provider_foundation at /home/user/.pub-cache/hosted/pub.dev/path_provider_foundation-2.6.0/
+[   +6 ms] Found plugin path_provider_android at /home/user/.pub-cache/hosted/pub.dev/path_provider_android-2.3.1/
+[   +3 ms] Found plugin jni_flutter at /home/user/.pub-cache/hosted/pub.dev/jni_flutter-1.0.2/
+[   +3 ms] Found plugin jni at /home/user/.pub-cache/hosted/pub.dev/jni-1.0.3/
+[  +18 ms] Found plugin cryptography_flutter at /home/user/.pub-cache/hosted/pub.dev/cryptography_flutter-2.3.4/
+[  +49 ms] Found plugin path_provider at /home/user/.pub-cache/hosted/pub.dev/path_provider-2.1.6/
+[   +2 ms] Found plugin path_provider_windows at /home/user/.pub-cache/hosted/pub.dev/path_provider_windows-2.3.0/
+[   +8 ms] Found plugin path_provider_linux at /home/user/.pub-cache/hosted/pub.dev/path_provider_linux-2.2.2/
+[   +3 ms] Found plugin path_provider_foundation at /home/user/.pub-cache/hosted/pub.dev/path_provider_foundation-2.6.0/
+[   +5 ms] Found plugin path_provider_android at /home/user/.pub-cache/hosted/pub.dev/path_provider_android-2.3.1/
+[   +2 ms] Found plugin jni_flutter at /home/user/.pub-cache/hosted/pub.dev/jni_flutter-1.0.2/
+[   +2 ms] Found plugin jni at /home/user/.pub-cache/hosted/pub.dev/jni-1.0.3/
+[   +9 ms] Found plugin cryptography_flutter at /home/user/.pub-cache/hosted/pub.dev/cryptography_flutter-2.3.4/
+[  +17 ms] Skipping generating generated_plugin_registrant.h because it is up-to-date.
+[   +4 ms] Skipping generating generated_plugin_registrant.cc because it is up-to-date.
+[   +2 ms] Skipping generating generated_plugins.cmake because it is up-to-date.
+[  +53 ms] Initializing file store
+[  +13 ms] Skipping target: gen_localizations
+[   +3 ms] gen_dart_plugin_registrant: Starting due to {InvalidatedReasonKind.inputChanged: The following inputs have updated contents: /home/user/naza-mini-2/.dart_tool/package_config.json,/home/user/naza-mini-2/.dart_tool/flutter_build/dart_plugin_registrant.dart}
+[  +26 ms] Found plugin path_provider at /home/user/.pub-cache/hosted/pub.dev/path_provider-2.1.6/
+[   +1 ms] Found plugin path_provider_windows at /home/user/.pub-cache/hosted/pub.dev/path_provider_windows-2.3.0/
+[   +6 ms] Found plugin path_provider_linux at /home/user/.pub-cache/hosted/pub.dev/path_provider_linux-2.2.2/
+[   +2 ms] Found plugin path_provider_foundation at /home/user/.pub-cache/hosted/pub.dev/path_provider_foundation-2.6.0/
+[   +2 ms] Found plugin path_provider_android at /home/user/.pub-cache/hosted/pub.dev/path_provider_android-2.3.1/
+[   +2 ms] Found plugin jni_flutter at /home/user/.pub-cache/hosted/pub.dev/jni_flutter-1.0.2/
+[   +2 ms] Found plugin jni at /home/user/.pub-cache/hosted/pub.dev/jni-1.0.3/
+[   +7 ms] Found plugin cryptography_flutter at /home/user/.pub-cache/hosted/pub.dev/cryptography_flutter-2.3.4/
+[  +10 ms] Skipping generating dart_plugin_registrant.dart because it is up-to-date.
+[        ] gen_dart_plugin_registrant: Complete
+[   +2 ms] Skipping target: _composite
+[   +2 ms] complete
+[   +6 ms] Launching lib/main.dart on Linux in debug mode...
+[   +6 ms] /home/user/nazahealth/flutter/bin/cache/dart-sdk/bin/dartaotruntime /home/user/nazahealth/flutter/bin/cache/dart-sdk/bin/snapshots/frontend_server_aot.dart.snapshot --sdk-root /home/user/nazahealth/flutter/bin/cache/artifacts/engine/common/flutter_patched_sdk/ --incremental --target=flutter --experimental-emit-debug-metadata -DFLUTTER_VERSION=3.44.4 -DFLUTTER_CHANNEL=stable -DFLUTTER_GIT_URL=https://github.com/flutter/flutter.git -DFLUTTER_FRAMEWORK_REVISION=ad70ec4617 -DFLUTTER_ENGINE_REVISION=a10d8ac38d -DFLUTTER_DART_VERSION=3.12.2 --output-dill /tmp/flutter_tools.SQDIVU/flutter_tool.QRKPPX/app.dill --packages /home/user/naza-mini-2/.dart_tool/package_config.json -Ddart.vm.profile=false -Ddart.vm.product=false --enable-asserts --track-widget-creation --filesystem-scheme org-dartlang-root --initialize-from-dill build/1e57b4283dd269ba75191ea2755bf355.cache.dill.track.dill --source file:///home/user/naza-mini-2/.dart_tool/flutter_build/dart_plugin_registrant.dart --source package:flutter/src/dart_plugin_registrant.dart -Dflutter.dart_plugin_registrant=file:///home/user/naza-mini-2/.dart_tool/flutter_build/dart_plugin_registrant.dart --verbosity=error --enable-experiment=alternative-invalidation-strategy
+[  +21 ms] Building Linux application...
+[  +10 ms] <- compile package:naza_llamadart_gui/main.dart
+[   +4 ms] executing: [/home/user/naza-mini-2/build/linux/x64/debug/] cmake -G Ninja -DCMAKE_BUILD_TYPE=Debug -DFLUTTER_TARGET_PLATFORM=linux-x64 /home/user/naza-mini-2/linux
+[  +90 ms] -- NAZA: checking Debian/Crostini-compatible LlamaDart runtime
+[ +251 ms] 'bash' '/home/user/naza-mini-2/linux/../tool/prepare_linux_llamadart_native.sh'
+[        ] ==> NAZA: compatible local LlamaDart runtime already ready
+[  +84 ms] -- Could NOT find JNI (missing: JVM) 
+[   +1 ms] -- Configuring done
+[  +44 ms] -- Generating done
+[  +26 ms] -- Build files have been written to: /home/user/naza-mini-2/build/linux/x64/debug
+[  +20 ms] executing: ninja -C /home/user/naza-mini-2/build/linux/x64/debug install
+[  +17 ms] ninja: Entering directory `/home/user/naza-mini-2/build/linux/x64/debug'
+[+7715 ms] [1/5] Generating /home/user/naza-mini-2/linux/flutter/ephemeral/libflutter_linux_gtk.so, /home/user/naza-mini-2/linux/flutter/ephemeral/flutter_linux/fl_basic_message_channel.h, /home/user/naza-mini-2/linux/flutter/ephemeral/flutter_linux/fl_binary_codec.h, /home/user/naza-mini-2/linux/flutter/ephemeral/flutter_linux/fl_binary_messenger.h, /home/user/naza-mini-2/linux/flutter/ephemeral/flutter_linux/fl_dart_project.h, /home/user/naza-mini-2/linux/flutter/ephemeral/flutter_linux/fl_engine.h, /home/user/naza-mini-2/linux/flutter/ephemeral/flutter_linux/fl_json_message_codec.h, /home/user/naza-mini-2/linux/flutter/ephemeral/flutter_linux/fl_json_method_codec.h, /home/user/naza-mini-2/linux/flutter/ephemeral/flutter_linux/fl_message_codec.h, /home/user/naza-mini-2/linux/flutter/ephemeral/flutter_linux/fl_method_call.h, /home/user/naza-mini-2/linux/flutter/ephemeral/flutter_linux/fl_method_channel.h, /home/user/naza-mini-2/linux/flutter/ephemeral/flutter_linux/fl_method_codec.h, /home/user/naza-mini-2/linux/flutter/ephemeral/flutter_linux/fl_method_response.h, /home/user/naza-mini-2/linux/flutter/ephemeral/flutter_linux/fl_plugin_registrar.h, /home/user/naza-mini-2/linux/flutter/ephemeral/flutter_linux/fl_plugin_registry.h, /home/user/naza-mini-2/linux/flutter/ephemeral/flutter_linux/fl_standard_message_codec.h, /home/user/naza-mini-2/linux/flutter/ephemeral/flutter_linux/fl_standard_method_codec.h, /home/user/naza-mini-2/linux/flutter/ephemeral/flutter_linux/fl_string_codec.h, /home/user/naza-mini-2/linux/flutter/ephemeral/flutter_linux/fl_value.h, /home/user/naza-mini-2/linux/flutter/ephemeral/flutter_linux/fl_view.h, /home/user/naza-mini-2/linux/flutter/ephemeral/flutter_linux/flutter_linux.h, _phony_
+[        ] [  +26 ms] Unable to locate an Android SDK.
+[        ] [   +6 ms] executing: uname -m
+[        ] [   +4 ms] Exit code 0 from: uname -m
+[        ] [        ] x86_64
+[        ] [  +12 ms] Artifact Instance of 'MaterialFonts' is not required, skipping update.
+[        ] [        ] Artifact Instance of 'GradleWrapper' is not required, skipping update.
+[        ] [        ] Artifact Instance of 'AndroidGenSnapshotArtifacts' is not required, skipping update.
+[        ] [        ] Artifact Instance of 'AndroidInternalBuildArtifacts' is not required, skipping update.
+[        ] [        ] Artifact Instance of 'IOSEngineArtifacts' is not required, skipping update.
+[        ] [        ] Artifact Instance of 'FlutterWebSdk' is not required, skipping update.
+[        ] [        ] Artifact Instance of 'LegacyCanvasKitRemover' is not required, skipping update.
+[        ] [        ] Artifact Instance of 'FlutterSdk' is not required, skipping update.
+[        ] [        ] Artifact Instance of 'WindowsEngineArtifacts' is not required, skipping update.
+[        ] [        ] Artifact Instance of 'MacOSEngineArtifacts' is not required, skipping update.
+[        ] [        ] Artifact Instance of 'LinuxEngineArtifacts' is not required, skipping update.
+[        ] [        ] Artifact Instance of 'LinuxFuchsiaSDKArtifacts' is not required, skipping update.
+[        ] [        ] Artifact Instance of 'MacOSFuchsiaSDKArtifacts' is not required, skipping update.
+[        ] [        ] Artifact Instance of 'FlutterRunnerSDKArtifacts' is not required, skipping update.
+[        ] [        ] Artifact Instance of 'FlutterRunnerDebugSymbols' is not required, skipping update.
+[        ] [        ] Artifact Instance of 'IosUsbArtifacts' is not required, skipping update.
+[        ] [        ] Artifact Instance of 'IosUsbArtifacts' is not required, skipping update.
+[        ] [        ] Artifact Instance of 'IosUsbArtifacts' is not required, skipping update.
+[        ] [        ] Artifact Instance of 'IosUsbArtifacts' is not required, skipping update.
+[        ] [        ] Artifact Instance of 'IosUsbArtifacts' is not required, skipping update.
+[        ] [        ] Artifact Instance of 'IosUsbArtifacts' is not required, skipping update.
+[        ] [        ] Artifact Instance of 'FontSubsetArtifacts' is not required, skipping update.
+[        ] [        ] Artifact Instance of 'PubDependencies' is not required, skipping update.
+[        ] [  +15 ms] Artifact Instance of 'AndroidGenSnapshotArtifacts' is not required, skipping update.
+[        ] [        ] Artifact Instance of 'AndroidInternalBuildArtifacts' is not required, skipping update.
+[        ] [        ] Artifact Instance of 'IOSEngineArtifacts' is not required, skipping update.
+[        ] [        ] Artifact Instance of 'FlutterWebSdk' is not required, skipping update.
+[        ] [        ] Artifact Instance of 'FlutterEngineStamp' is not required, skipping update.
+[        ] [        ] Artifact Instance of 'LegacyCanvasKitRemover' is not required, skipping update.
+[        ] [   +2 ms] Artifact Instance of 'WindowsEngineArtifacts' is not required, skipping update.
+[        ] [        ] Artifact Instance of 'MacOSEngineArtifacts' is not required, skipping update.
+[        ] [        ] Artifact Instance of 'LinuxEngineArtifacts' is not required, skipping update.
+[        ] [        ] Artifact Instance of 'LinuxFuchsiaSDKArtifacts' is not required, skipping update.
+[        ] [        ] Artifact Instance of 'MacOSFuchsiaSDKArtifacts' is not required, skipping update.
+[        ] [        ] Artifact Instance of 'FlutterRunnerSDKArtifacts' is not required, skipping update.
+[        ] [        ] Artifact Instance of 'FlutterRunnerDebugSymbols' is not required, skipping update.
+[        ] [  +64 ms] Artifact Instance of 'MaterialFonts' is not required, skipping update.
+[        ] [        ] Artifact Instance of 'GradleWrapper' is not required, skipping update.
+[        ] [        ] Artifact Instance of 'AndroidGenSnapshotArtifacts' is not required, skipping update.
+[        ] [        ] Artifact Instance of 'AndroidInternalBuildArtifacts' is not required, skipping update.
+[        ] [        ] Artifact Instance of 'IOSEngineArtifacts' is not required, skipping update.
+[        ] [        ] Artifact Instance of 'FlutterWebSdk' is not required, skipping update.
+[        ] [        ] Artifact Instance of 'FlutterEngineStamp' is not required, skipping update.
+[        ] [        ] Artifact Instance of 'LegacyCanvasKitRemover' is not required, skipping update.
+[        ] [        ] Artifact Instance of 'FlutterSdk' is not required, skipping update.
+[        ] [        ] Artifact Instance of 'WindowsEngineArtifacts' is not required, skipping update.
+[        ] [        ] Artifact Instance of 'MacOSEngineArtifacts' is not required, skipping update.
+[        ] [   +1 ms] Artifact Instance of 'LinuxFuchsiaSDKArtifacts' is not required, skipping update.
+[        ] [        ] Artifact Instance of 'MacOSFuchsiaSDKArtifacts' is not required, skipping update.
+[        ] [        ] Artifact Instance of 'FlutterRunnerSDKArtifacts' is not required, skipping update.
+[        ] [        ] Artifact Instance of 'FlutterRunnerDebugSymbols' is not required, skipping update.
+[        ] [   +1 ms] Artifact Instance of 'IosUsbArtifacts' is not required, skipping update.
+[        ] [        ] Artifact Instance of 'IosUsbArtifacts' is not required, skipping update.
+[        ] [        ] Artifact Instance of 'IosUsbArtifacts' is not required, skipping update.
+[        ] [        ] Artifact Instance of 'IosUsbArtifacts' is not required, skipping update.
+[        ] [        ] Artifact Instance of 'IosUsbArtifacts' is not required, skipping update.
+[        ] [        ] Artifact Instance of 'IosUsbArtifacts' is not required, skipping update.
+[        ] [        ] Artifact Instance of 'FontSubsetArtifacts' is not required, skipping update.
+[        ] [        ] Artifact Instance of 'PubDependencies' is not required, skipping update.
+[        ] [  +18 ms] Initializing file store
+[        ] [  +18 ms] Done initializing file store
+[        ] [ +267 ms] Skipping target: dart_build
+[        ] [   +3 ms] Skipping target: gen_dart_plugin_registrant
+[        ] [ +637 ms] Skipping target: unpack_linux
+[        ] [ +139 ms] Skipping target: install_code_assets
+[        ] [        ] Skipping target: gen_localizations
+[        ] [ +764 ms] kernel_snapshot_program: Starting due to {InvalidatedReasonKind.inputChanged: The following inputs have updated contents: /home/user/naza-mini-2/lib/screens/naza_shell.dart}
+[  +16 ms] [  +16 ms] /home/user/nazahealth/flutter/bin/cache/dart-sdk/bin/dartaotruntime /home/user/nazahealth/flutter/bin/cache/dart-sdk/bin/snapshots/frontend_server_aot.dart.snapshot --sdk-root /home/user/nazahealth/flutter/bin/cache/artifacts/engine/common/flutter_patched_sdk/ --target=flutter --no-print-incremental-dependencies -DFLUTTER_VERSION=3.44.4 -DFLUTTER_CHANNEL=stable -DFLUTTER_GIT_URL=https://github.com/flutter/flutter.git -DFLUTTER_FRAMEWORK_REVISION=ad70ec4617 -DFLUTTER_ENGINE_REVISION=a10d8ac38d -DFLUTTER_DART_VERSION=3.12.2 -Ddart.vm.profile=false -Ddart.vm.product=false --enable-asserts --track-widget-creation --packages /home/user/naza-mini-2/.dart_tool/package_config.json --output-dill /home/user/naza-mini-2/.dart_tool/flutter_build/e932ef610b2c6140e7aa362cd5519d81/app.dill --depfile /home/user/naza-mini-2/.dart_tool/flutter_build/e932ef610b2c6140e7aa362cd5519d81/kernel_snapshot_program.d --incremental --initialize-from-dill /home/user/naza-mini-2/.dart_tool/flutter_build/e932ef610b2c6140e7aa362cd5519d81/app.dill --source file:///home/user/naza-mini-2/.dart_tool/flutter_build/dart_plugin_registrant.dart --source package:flutter/src/dart_plugin_registrant.dart -Dflutter.dart_plugin_registrant=file:///home/user/naza-mini-2/.dart_tool/flutter_build/dart_plugin_registrant.dart --verbosity=error package:naza_llamadart_gui/main.dart
+[        ] [+2028 ms] kernel_snapshot_program: Complete
+[        ] [+1240 ms] debug_bundle_linux-x64_assets: Starting due to {InvalidatedReasonKind.inputChanged: The following inputs have updated contents: /home/user/naza-mini-2/.dart_tool/flutter_build/e932ef610b2c6140e7aa362cd5519d81/app.dill}
+[   +3 ms] [ +320 ms] impellerc command: [/home/user/nazahealth/flutter/bin/cache/artifacts/engine/linux-x64/impellerc, --sksl, --runtime-stage-gles, --runtime-stage-gles3, --runtime-stage-vulkan, --iplr, --sl=/home/user/naza-mini-2/build/flutter_assets/shaders/ink_sparkle.frag, --spirv=/home/user/naza-mini-2/build/flutter_assets/shaders/ink_sparkle.frag.spirv, --input=/home/user/nazahealth/flutter/packages/flutter/lib/src/material/shaders/ink_sparkle.frag, --input-type=frag, --include=/home/user/nazahealth/flutter/packages/flutter/lib/src/material/shaders, --include=/home/user/nazahealth/flutter/bin/cache/artifacts/engine/linux-x64/shader_lib]
+[   +4 ms] [   +2 ms] impellerc command: [/home/user/nazahealth/flutter/bin/cache/artifacts/engine/linux-x64/impellerc, --sksl, --runtime-stage-gles, --runtime-stage-gles3, --runtime-stage-vulkan, --iplr, --sl=/home/user/naza-mini-2/build/flutter_assets/shaders/stretch_effect.frag, --spirv=/home/user/naza-mini-2/build/flutter_assets/shaders/stretch_effect.frag.spirv, --input=/home/user/nazahealth/flutter/packages/flutter/lib/src/material/shaders/stretch_effect.frag, --input-type=frag, --include=/home/user/nazahealth/flutter/packages/flutter/lib/src/material/shaders, --include=/home/user/nazahealth/flutter/bin/cache/artifacts/engine/linux-x64/shader_lib]
+[        ] [ +943 ms] debug_bundle_linux-x64_assets: Complete
+[        ] [ +345 ms] Persisting file store
+[        ] [  +13 ms] Done persisting file store
+[        ] [  +23 ms] build succeeded.
+[        ] [   +2 ms] "flutter assemble" took 6,868ms.
+[        ] [  +35 ms] Running 1 shutdown hook
+[        ] [   +1 ms] Shutdown hooks complete
+[        ] [   +5 ms] exiting with code 0
+[        ] [1/2] Install the project...
+[        ] -- Install configuration: "Debug"
+[        ] -- Installing: /home/user/naza-mini-2/build/linux/x64/debug/bundle/naza_llamadart_gui
+[        ] -- Set runtime path of "/home/user/naza-mini-2/build/linux/x64/debug/bundle/naza_llamadart_gui" to "$ORIGIN/lib"
+[        ] -- Installing: /home/user/naza-mini-2/build/linux/x64/debug/bundle/data/icudtl.dat
+[        ] -- Installing: /home/user/naza-mini-2/build/linux/x64/debug/bundle/lib/libflutter_linux_gtk.so
+[        ] -- Up-to-date: /home/user/naza-mini-2/build/linux/x64/debug/bundle/lib
+[        ] -- Installing: /home/user/naza-mini-2/build/linux/x64/debug/bundle/lib/libggml-base.so
+[        ] -- Installing: /home/user/naza-mini-2/build/linux/x64/debug/bundle/lib/libggml-base.so.0
+[        ] -- Installing: /home/user/naza-mini-2/build/linux/x64/debug/bundle/lib/libggml-cpu.so
+[        ] -- Installing: /home/user/naza-mini-2/build/linux/x64/debug/bundle/lib/libggml-cpu.so.0
+[        ] -- Installing: /home/user/naza-mini-2/build/linux/x64/debug/bundle/lib/libggml.so
+[        ] -- Installing: /home/user/naza-mini-2/build/linux/x64/debug/bundle/lib/libggml.so.0
+[        ] -- Installing: /home/user/naza-mini-2/build/linux/x64/debug/bundle/lib/libllama-common.so
+[        ] -- Installing: /home/user/naza-mini-2/build/linux/x64/debug/bundle/lib/libllama-common.so.0
+[        ] -- Installing: /home/user/naza-mini-2/build/linux/x64/debug/bundle/lib/libllama.so
+[        ] -- Installing: /home/user/naza-mini-2/build/linux/x64/debug/bundle/lib/libllama.so.0
+[        ] -- Installing: /home/user/naza-mini-2/build/linux/x64/debug/bundle/lib/libllamadart.so
+[        ] -- Installing: /home/user/naza-mini-2/build/linux/x64/debug/bundle/lib/libllamadart.so.0
+[        ] -- Installing: /home/user/naza-mini-2/build/linux/x64/debug/bundle/lib/libmtmd.so
+[        ] -- Installing: /home/user/naza-mini-2/build/linux/x64/debug/bundle/lib/libmtmd.so.0
+[        ] -- Installing: /home/user/naza-mini-2/build/linux/x64/debug/bundle/lib/libsqlite3.so
+[        ] -- Installing: /home/user/naza-mini-2/build/linux/x64/debug/bundle/data/flutter_assets
+[        ] -- Installing: /home/user/naza-mini-2/build/linux/x64/debug/bundle/data/flutter_assets/kernel_blob.bin
+[        ] -- Installing: /home/user/naza-mini-2/build/linux/x64/debug/bundle/data/flutter_assets/NativeAssetsManifest.json
+[        ] -- Installing: /home/user/naza-mini-2/build/linux/x64/debug/bundle/data/flutter_assets/AssetManifest.bin
+[        ] -- Installing: /home/user/naza-mini-2/build/linux/x64/debug/bundle/data/flutter_assets/FontManifest.json
+[        ] -- Installing: /home/user/naza-mini-2/build/linux/x64/debug/bundle/data/flutter_assets/NOTICES.Z
+[        ] -- Installing: /home/user/naza-mini-2/build/linux/x64/debug/bundle/data/flutter_assets/version.json
+[        ] -- Installing: /home/user/naza-mini-2/build/linux/x64/debug/bundle/data/flutter_assets/fonts
+[        ] -- Installing: /home/user/naza-mini-2/build/linux/x64/debug/bundle/data/flutter_assets/fonts/MaterialIcons-Regular.otf
+[        ] -- Installing: /home/user/naza-mini-2/build/linux/x64/debug/bundle/data/flutter_assets/shaders
+[        ] -- Installing: /home/user/naza-mini-2/build/linux/x64/debug/bundle/data/flutter_assets/shaders/ink_sparkle.frag
+[        ] -- Installing: /home/user/naza-mini-2/build/linux/x64/debug/bundle/data/flutter_assets/shaders/stretch_effect.frag
+[   +3 ms] Building Linux application... (completed in 8.3s)
+[   +2 ms] ✓ Built build/linux/x64/debug/bundle/naza_llamadart_gui
+[+1148 ms] VM Service URL on device: http://127.0.0.1:34765/v8MbLJL1Gqw=/
+[   +6 ms] Caching compiled dill
+[ +105 ms] Connecting to service protocol: http://127.0.0.1:34765/v8MbLJL1Gqw=/
+[ +113 ms] Gdk-Message: 15:04:05.016: Unable to load  from the cursor theme
+[  +60 ms] Launching a Dart Developer Service (DDS) instance at http://127.0.0.1:0, connecting to VM service at http://127.0.0.1:34765/v8MbLJL1Gqw=/.
+[  +74 ms] [NAZA] initialize: started
+[ +170 ms] Successfully connected to service protocol: http://127.0.0.1:34765/v8MbLJL1Gqw=/
+[  +26 ms] DevFS: Creating new filesystem on the device (null)
+[  +59 ms] DevFS: Created new filesystem on the device (file:///tmp/naza-mini-2RZEILH/naza-mini-2/)
+[   +5 ms] Updating assets for linux
+[   +2 ms] runHooks() with {TargetFile: /home/user/naza-mini-2/lib/main.dart, BuildMode: debug} and TargetPlatform.linux_x64
+[        ] runHooks() - will perform dart build
+[  +48 ms] Building native assets for linux_x64.
+[  +60 ms] input.json contents:
+           {
+             "assets": {},
+             "config": {
+               "build_asset_types": [],
+               "linking_enabled": false
+             },
+             "out_dir_shared": "/home/user/naza-mini-2/.dart_tool/hooks_runner/shared/objective_c/build/",
+             "out_file": "/home/user/naza-mini-2/.dart_tool/hooks_runner/objective_c/337ce265dc/output.json",
+             "package_name": "objective_c",
+             "package_root": "/home/user/.pub-cache/hosted/pub.dev/objective_c-9.5.0/",
+             "user_defines": {}
+           }
+[   +7 ms] output.json contents:
+           {
+             "assets_for_linking": {},
+             "status": "success",
+             "timestamp": "2026-08-26 14:57:54.000"
+           }
+[   +4 ms] Skipping build for objective_c in /home/user/naza-mini-2/.dart_tool/hooks_runner/objective_c/337ce265dc/. Last build on 2026-08-26 14:57:54.000.
+[  +17 ms] input.json contents:
+           {
+             "assets": {},
+             "config": {
+               "build_asset_types": [],
+               "linking_enabled": false
+             },
+             "out_dir_shared": "/home/user/naza-mini-2/.dart_tool/hooks_runner/shared/llamadart/build/",
+             "out_file": "/home/user/naza-mini-2/.dart_tool/hooks_runner/llamadart/337ce265dc/output.json",
+             "package_name": "llamadart",
+             "package_root": "/home/user/.pub-cache/hosted/pub.dev/llamadart-0.8.17/",
+             "user_defines": {
+               "workspace_pubspec": {
+                 "base_path": "/home/user/naza-mini-2/pubspec.yaml",
+                 "defines": {
+                   "llamadart_native_runtimes": [
+                     "llama_cpp"
+                   ],
+                   "llamadart_native_tag": "b10075",
+                   "llamadart_native_path": "./native-bundles",
+                   "llamadart_native_backends": {
+                     "platforms": {
+                       "linux-x64": [
+                         "cpu"
+                       ]
+                     }
+                   }
+                 }
+               }
+             }
+           }
+[   +4 ms] output.json contents:
+           {
+             "assets_for_linking": {},
+             "status": "success",
+             "timestamp": "2026-08-26 14:57:56.000"
+           }
+[   +1 ms] Skipping build for llamadart in /home/user/naza-mini-2/.dart_tool/hooks_runner/llamadart/337ce265dc/. Last build on 2026-08-26 14:57:56.000.
+[   +7 ms] input.json contents:
+           {
+             "assets": {},
+             "config": {
+               "build_asset_types": [],
+               "linking_enabled": false
+             },
+             "out_dir_shared": "/home/user/naza-mini-2/.dart_tool/hooks_runner/shared/sqlite3/build/",
+             "out_file": "/home/user/naza-mini-2/.dart_tool/hooks_runner/sqlite3/337ce265dc/output.json",
+             "package_name": "sqlite3",
+             "package_root": "/home/user/.pub-cache/hosted/pub.dev/sqlite3-3.5.1/",
+             "user_defines": {}
+           }
+[   +1 ms] output.json contents:
+           {
+             "assets_for_linking": {},
+             "status": "success",
+             "timestamp": "2026-08-26 14:57:58.000"
+           }
+[   +2 ms] Skipping build for sqlite3 in /home/user/naza-mini-2/.dart_tool/hooks_runner/sqlite3/337ce265dc/. Last build on 2026-08-26 14:57:58.000.
+[   +5 ms] Building native assets for linux_x64 done.
+[   +1 ms] runHooks() - done
+[ +103 ms] Syncing files to device Linux...
+[   +3 ms] Compiling dart to kernel with 0 updated files
+[        ] Processing bundle.
+[   +1 ms] <- recompile package:naza_llamadart_gui/main.dart eb0f2aee-d344-4b67-878b-d28bd4000b28
+[        ] <- eb0f2aee-d344-4b67-878b-d28bd4000b28
+[   +2 ms] Bundle processing done.
+[   +6 ms] [NAZA] initialize: finished in 550ms
+[  +93 ms] Updating files.
+[        ] Pending asset builds completed. Writing dirty entries.
+[        ] DevFS: Sync finished
+[        ] Syncing files to device Linux... (completed in 110ms)
+[   +1 ms] Synced 0.0MB.
+[   +1 ms] <- accept
+[   +5 ms] Connected to _flutterView/0x5613f8026860.
+[   +4 ms] Flutter run key commands.
+[   +2 ms] r Hot reload. 🔥🔥🔥
+[   +2 ms] R Hot restart.
+[   +1 ms] h List all available interactive commands.
+[   +1 ms] d Detach (terminate "flutter run" but leave application running).
+[        ] c Clear the screen
+[        ] q Quit (terminate the application on the device).
+[   +1 ms] A Dart VM Service on Linux is available at: http://127.0.0.1:40233/tsFVug7hsBI=/
+[   +2 ms] The Flutter DevTools debugger and profiler on Linux is available at: http://127.0.0.1:40233/tsFVug7hsBI=/devtools/?uri=ws://127.0.0.1:40233/tsFVug7hsBI=/ws
+[+8007 ms] Service protocol connection closed.
+[   +1 ms] Lost connection to device.
+[   +1 ms] DevFS: Deleting filesystem on the device (file:///tmp/naza-mini-2RZEILH/naza-mini-2/)
+[   +1 ms] DevFS: Deleted filesystem on the device (file:///tmp/naza-mini-2RZEILH/naza-mini-2/)
+[   +5 ms] "flutter run" took 19,076ms.
+[   +5 ms] Running 3 shutdown hooks
+[  +12 ms] Shutdown hooks complete
+[  +14 ms] exiting with code 0

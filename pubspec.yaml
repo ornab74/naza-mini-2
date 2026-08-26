@@ -1,0 +1,34 @@
+name: naza_llamadart_gui
+description: Scanner-only gradient Flutter GUI port of NAZA using LlamaDart with one local Llama 3 Small GGUF model.
+publish_to: "none"
+version: 0.2.3+6
+
+environment:
+  sdk: ">=3.10.7 <4.0.0"
+
+flutter:
+  uses-material-design: true
+
+dependencies:
+  flutter:
+    sdk: flutter
+  llamadart: 0.8.17
+  path_provider: ^2.1.6
+  cryptography: ^2.9.0
+  cryptography_flutter: ^2.3.4
+  sqlite3: ^3.5.0
+
+
+# Linux/Crostini compatibility:
+# LlamaDart 0.8.17 expects the b10075 native ABI. The preparation script
+# compiles that exact bridge on the local Linux host, avoiding the upstream
+# prebuilt binary's newer GLIBC requirement.
+hooks:
+  user_defines:
+    llamadart:
+      llamadart_native_runtimes: [llama_cpp]
+      llamadart_native_tag: b10075
+      llamadart_native_path: ./native-bundles
+      llamadart_native_backends:
+        platforms:
+          linux-x64: [cpu]

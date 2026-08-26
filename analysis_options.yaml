@@ -1,0 +1,10 @@
+analyzer:
+  exclude:
+    - build/**
+  errors:
+    deprecated_member_use: ignore
+linter:
+  rules:
+    avoid_print: true
+    prefer_const_constructors: true
+    prefer_const_literals_to_create_immutables: true

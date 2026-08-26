@@ -1,0 +1,12 @@
+NAZA SCANNER — REAL APPLICATION SOURCE
+
+Expected Flutter entrypoint:
+  lib/main.dart -> NazaApp -> NazaShell
+
+Expected road scanner modes:
+  1) Chunked generation + punkd (recommended)
+  2) Chunked only
+  3) Direct single-call generation
+
+Raw model completion is shown under "Model output".
+This is NOT the Flutter counter/demo application.

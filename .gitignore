@@ -1,0 +1,18 @@
+.dart_tool/
+.packages
+.pub/
+build/
+.flutter-plugins
+.flutter-plugins-dependencies
+.idea/
+.vscode/
+*.iml
+.DS_Store
+android/.gradle/
+ios/Pods/
+macos/Pods/
+
+# Locally compiled LlamaDart Linux compatibility runtime/source
+third_party/llamadart-native-b10075/
+native-bundles/linux-x64/*.so
+native-bundles/linux-x64/*.so.*
