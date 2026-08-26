@@ -118,8 +118,18 @@ jobs:
         run: |
           flutter create --no-pub \
             --platforms=${{ matrix.platform }} \
-            --project-name=naza_llamadart_gui \
-            --org=com.naza .
+            --project-name=roadscanner \
+            --org=com.qroadscan .
+
+      - name: Verify Android package name
+        if: matrix.platform == 'android'
+        shell: bash
+        run: |
+          grep -q 'com.qroadscan.roadscanner' android/app/build.gradle.kts
+          if grep -q 'com.naza\|naza_llamadart_gui' android/app/build.gradle.kts; then
+            echo 'Unexpected old Android package name found' >&2
+            exit 1
+          fi
 
       - name: Configure Android release signing
         if: matrix.platform == 'android'
