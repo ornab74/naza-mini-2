@@ -38,6 +38,7 @@ class _MirrorSession {
   double ewmaBytesPerSecond = 0;
   int successes = 0;
   int failures = 0;
+  String? lastError;
   DateTime cooldownUntil = DateTime.fromMillisecondsSinceEpoch(0);
   bool disabled = false;
 
@@ -60,8 +61,9 @@ class _MirrorSession {
     cooldownUntil = DateTime.fromMillisecondsSinceEpoch(0);
   }
 
-  void recordFailure() {
+  void recordFailure([Object? error]) {
     failures++;
+    lastError = error?.toString();
     final exponent = min(5, failures);
     cooldownUntil = DateTime.now().add(
       Duration(milliseconds: 350 * (1 << exponent)),
@@ -267,7 +269,15 @@ class ModelService {
 
       final live = sessions.where((session) => !session.disabled).toList();
       if (live.isEmpty) {
-        throw StateError('All model mirrors failed the range/TLS probe.');
+        final details = sessions
+            .map(
+              (session) =>
+                  '${session.mirror.label}: ${session.lastError ?? 'unknown error'}',
+            )
+            .join(' | ');
+        throw StateError(
+          'All model mirrors failed the range/TLS probe. Details: $details',
+        );
       }
 
       onProgress?.call(0.03, 'Secure mirrors ready • ${_telemetry(live)}');
@@ -506,7 +516,7 @@ class ModelService {
         return;
       } catch (error) {
         await _deleteIfExists(probe);
-        session.recordFailure();
+        session.recordFailure(error);
         if (attempt == 2) {
           session.disabled = true;
           onProgress?.call(

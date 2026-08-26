@@ -131,6 +131,30 @@ jobs:
             exit 1
           fi
 
+      - name: Enable Android HTTPS model downloads
+        if: matrix.platform == 'android'
+        shell: bash
+        run: |
+          python3 - <<'PY'
+          import re
+          from pathlib import Path
+
+          path = Path("android/app/src/main/AndroidManifest.xml")
+          source = path.read_text()
+          permission = '    <uses-permission android:name="android.permission.INTERNET" />'
+          if 'android.permission.INTERNET' not in source:
+              source, count = re.subn(
+                  r'(<manifest\b[^>]*>)',
+                  r'\1\n' + permission,
+                  source,
+                  count=1,
+              )
+              if count != 1:
+                  raise SystemExit("Could not locate the Android manifest root")
+              path.write_text(source)
+          PY
+          grep -q 'android.permission.INTERNET' android/app/src/main/AndroidManifest.xml
+
       - name: Configure Android release signing
         if: matrix.platform == 'android'
         shell: bash
