@@ -1,7 +1,7 @@
 name: naza_llamadart_gui
 description: Scanner-only gradient Flutter GUI port of NAZA using LlamaDart with one local Llama 3 Small GGUF model.
 publish_to: "none"
-version: 0.2.3+6
+version: 0.2.4+7
 
 environment:
   sdk: ">=3.10.7 <4.0.0"
