@@ -1,17 +1,9 @@
-# IMPORTANT: use the real NAZA launcher
-
-On Linux, run:
-
-```bash
-chmod +x run_linux.sh
-./run_linux.sh
-```
-
-The launcher checks that `lib/main.dart` points to `NazaShell`, that the CHUNKD scanner modes exist, and that the raw **Model output** panel exists before starting Flutter. Do **not** run `flutter create .` inside this directory; that would replace the application source with Flutter's demo template.
 
 # NAZA Road Scanner — LlamaDart / Llama 3 Small
 
 Scanner-only Flutter GUI port of NAZA. This build contains **no chat UI**, **no Gemma / LiteRT-LM runtime**, and the scanner generation choices: **CHUNKD**, **CHUNKD only**, and **direct single-call**.
+<img width="437" height="861" alt="Screenshot 2026-08-26 8 32 15 PM" src="https://github.com/user-attachments/assets/7b8c1fc2-27ea-42a1-b203-a986d005edfd" />
+
 
 ## Startup flow
 
@@ -122,7 +114,16 @@ Release build:
 flutter build linux --release
 ./build/linux/x64/release/bundle/naza_llamadart_gui
 ```
+# IMPORTANT: use the real NAZA launcher
 
+On Linux, run:
+
+```bash
+chmod +x run_linux.sh
+./run_linux.sh
+```
+
+The launcher checks that `lib/main.dart` points to `NazaShell`, that the CHUNKD scanner modes exist, and that the raw **Model output** panel exists before starting Flutter. Do **not** run `flutter create .` inside this directory; that would replace the application source with Flutter's demo template.
 ## GitHub Actions builds
 
 The workflow at `.github/workflows/build.yml` runs source analysis and builds
