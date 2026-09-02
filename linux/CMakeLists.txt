@@ -34,6 +34,20 @@ endfunction()
 # target runs. Build the b10075 bridge here so LlamaDart's native-assets hook
 # can resolve ./native-bundles during flutter_assemble.
 if(CMAKE_SYSTEM_NAME STREQUAL "Linux")
+  set(NAZA_OQS_PREP "${CMAKE_CURRENT_SOURCE_DIR}/../tool/prepare_linux_liboqs.sh")
+  if(EXISTS "${NAZA_OQS_PREP}")
+    message(STATUS "NAZA: checking pinned liboqs 0.14.0 runtime")
+    execute_process(
+      COMMAND bash "${NAZA_OQS_PREP}"
+      WORKING_DIRECTORY "${CMAKE_CURRENT_SOURCE_DIR}/.."
+      RESULT_VARIABLE NAZA_OQS_PREP_RESULT
+      COMMAND_ECHO STDOUT
+    )
+    if(NOT NAZA_OQS_PREP_RESULT EQUAL 0)
+      message(FATAL_ERROR "NAZA: pinned liboqs preparation failed (${NAZA_OQS_PREP_RESULT})")
+    endif()
+  endif()
+
   set(NAZA_NATIVE_PREP "${CMAKE_CURRENT_SOURCE_DIR}/../tool/prepare_linux_llamadart_native.sh")
   if(EXISTS "${NAZA_NATIVE_PREP}")
     message(STATUS "NAZA: checking Debian/Crostini-compatible LlamaDart runtime")
@@ -75,6 +89,8 @@ foreach(bundled_library ${PLUGIN_BUNDLED_LIBRARIES})
 endforeach(bundled_library)
 set(NATIVE_ASSETS_DIR "${PROJECT_BUILD_DIR}native_assets/linux/")
 install(DIRECTORY "${NATIVE_ASSETS_DIR}" DESTINATION "${INSTALL_BUNDLE_LIB_DIR}" COMPONENT Runtime)
+file(GLOB NAZA_OQS_LIBRARIES "${CMAKE_CURRENT_SOURCE_DIR}/../native-bundles/linux-x64/liboqs.so*")
+install(FILES ${NAZA_OQS_LIBRARIES} DESTINATION "${INSTALL_BUNDLE_LIB_DIR}" COMPONENT Runtime)
 set(FLUTTER_ASSET_DIR_NAME "flutter_assets")
 install(CODE "file(REMOVE_RECURSE \"${INSTALL_BUNDLE_DATA_DIR}/${FLUTTER_ASSET_DIR_NAME}\")" COMPONENT Runtime)
 install(DIRECTORY "${PROJECT_BUILD_DIR}/${FLUTTER_ASSET_DIR_NAME}" DESTINATION "${INSTALL_BUNDLE_DATA_DIR}" COMPONENT Runtime)

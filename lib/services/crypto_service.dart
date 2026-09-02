@@ -7,12 +7,14 @@ import 'package:cryptography/cryptography.dart';
 import 'package:cryptography_flutter/cryptography_flutter.dart';
 
 import 'linux_crypto.dart';
+import 'linux_oqs.dart';
 
 class NazaCryptoService {
   NazaCryptoService();
 
   static final _smallMagic = utf8.encode('NAZA-DART-AES-GCM-v1\n');
   static final _streamMagic = utf8.encode('NAZA-DART-AES-GCM-CHUNK-v1\n');
+  static final _pqMagic = utf8.encode('NAZA-ML-KEM-768-AES-GCM-v1\n');
   // Larger chunks reduce per-operation overhead. Linux uses OpenSSL's native
   // AES-GCM fast path; the Dart fallback also benefits from fewer operations.
   static const chunkSize = 16 * 1024 * 1024;
@@ -24,15 +26,106 @@ class NazaCryptoService {
   // pure-Dart cipher to be chosen by accident. Linux uses OpenSSL below.
   final AesGcm _aes = FlutterCryptography().aesGcm(secretKeyLength: 32);
   final LinuxOpenSslAesGcm? _native = LinuxOpenSslAesGcm.tryOpen();
+  final LinuxLibOqs? _oqs = LinuxLibOqs.tryOpen();
   final Random _random = Random.secure();
 
   String get backendLabel {
-    if (_native != null) return 'OpenSSL AES-GCM';
+    if (_native != null) {
+      return _oqs == null
+          ? 'OpenSSL AES-GCM'
+          : 'OpenSSL AES-GCM + ML-KEM-768 (liboqs 0.14.0)';
+    }
     if (FlutterCryptography.isPluginPresent &&
         (Platform.isAndroid || Platform.isIOS || Platform.isMacOS)) {
       return 'Native AES-GCM';
     }
     return 'Background AES-GCM';
+  }
+
+  bool get isPostQuantumAvailable => _oqs != null;
+
+  MlKemKeyPair generatePostQuantumKeyPair() => _requireOqs().generateKeyPair();
+
+  /// Encrypts to an ML-KEM-768 public key. HKDF-SHA-256 domain-separates the
+  /// KEM secret before it is used as the AES-256-GCM content-encryption key.
+  Future<Uint8List> encryptBytesPostQuantum(
+    Uint8List clear,
+    Uint8List recipientPublicKey,
+  ) async {
+    final encapsulation = _requireOqs().encapsulate(recipientPublicKey);
+    try {
+      final key = await _deriveKemKey(
+        encapsulation.sharedSecret,
+        encapsulation.ciphertext,
+      );
+      try {
+        final encrypted = await encryptBytes(clear, key);
+        return Uint8List.fromList(<int>[
+          ..._pqMagic,
+          ...encapsulation.ciphertext,
+          ...encrypted,
+        ]);
+      } finally {
+        key.fillRange(0, key.length, 0);
+      }
+    } finally {
+      encapsulation.sharedSecret.fillRange(
+        0,
+        encapsulation.sharedSecret.length,
+        0,
+      );
+    }
+  }
+
+  Future<Uint8List> decryptBytesPostQuantum(
+    Uint8List payload,
+    Uint8List recipientSecretKey,
+  ) async {
+    final headerLength = _pqMagic.length + LinuxLibOqs.ciphertextSize;
+    if (payload.length < headerLength) {
+      throw const FormatException('Post-quantum envelope is too short.');
+    }
+    if (!_constantTimeEquals(payload.sublist(0, _pqMagic.length), _pqMagic)) {
+      throw const FormatException('Unknown post-quantum envelope format.');
+    }
+    final ciphertext = payload.sublist(_pqMagic.length, headerLength);
+    final sharedSecret = _requireOqs().decapsulate(
+      ciphertext,
+      recipientSecretKey,
+    );
+    try {
+      final key = await _deriveKemKey(sharedSecret, ciphertext);
+      try {
+        return await decryptBytes(payload.sublist(headerLength), key);
+      } finally {
+        key.fillRange(0, key.length, 0);
+      }
+    } finally {
+      sharedSecret.fillRange(0, sharedSecret.length, 0);
+    }
+  }
+
+  LinuxLibOqs _requireOqs() {
+    final oqs = _oqs;
+    if (oqs == null) {
+      throw StateError(
+        'Post-quantum encryption requires the pinned liboqs 0.14.0 Linux bundle.',
+      );
+    }
+    return oqs;
+  }
+
+  Future<Uint8List> _deriveKemKey(
+    Uint8List sharedSecret,
+    Uint8List kemCiphertext,
+  ) async {
+    final hkdf = Hkdf(hmac: Hmac.sha256(), outputLength: 32);
+    final key = await hkdf.deriveKey(
+      secretKey: SecretKey(sharedSecret),
+      nonce: kemCiphertext,
+      info: utf8.encode('NAZA ML-KEM-768 AES-256-GCM envelope v1'),
+    );
+    return Uint8List.fromList(await key.extractBytes());
   }
 
   Uint8List randomBytes(int count) => Uint8List.fromList(

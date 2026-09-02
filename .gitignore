@@ -19,3 +19,4 @@ macos/Pods/
 third_party/llamadart-native-b10075/
 native-bundles/linux-x64/*.so
 native-bundles/linux-x64/*.so.*
+third_party/liboqs-0.14.0/

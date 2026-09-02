@@ -19,7 +19,9 @@ printf '==> Entry: lib/main.dart -> NazaShell\n\n'
 
 if [[ "$(uname -s)" == "Linux" && "$(uname -m)" == "x86_64" ]]; then
   chmod +x tool/prepare_linux_llamadart_native.sh
+  chmod +x tool/prepare_linux_liboqs.sh
   ./tool/prepare_linux_llamadart_native.sh
+  ./tool/prepare_linux_liboqs.sh
 fi
 
 flutter pub get
@@ -27,11 +29,9 @@ flutter pub get
 # reliable here through XWayland, particularly for software-rendered damage
 # and pointer presentation.
 export GDK_BACKEND="${NAZA_GDK_BACKEND:-x11}"
-# Keep GTK itself on its non-GL path too. Flutter is already forced to Skia
-# software rendering below; this prevents XWayland/GTK GL context teardown
-# from being involved when the Chromebook window is resized.
-export GDK_GL=disable
+# Let Flutter's software renderer control rendering. Forcing GTK's GDK_GL
+# path off can leave Flutter's Linux compositor uninitialized under Crostini.
 export LIBGL_ALWAYS_SOFTWARE=1
 # The target environment has unreliable/absent OpenGL acceleration. Keep the
 # renderer deterministic so input handling is not affected by GPU failures.
-exec flutter run -d linux --enable-software-rendering --no-enable-impeller "$@"
+exec flutter run -d linux --enable-software-rendering "$@"

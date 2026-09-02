@@ -74,6 +74,7 @@ The built-in Pinata mirror is enabled by default and may be overridden in Model 
 - Linux/mobile gradient-icon shaders are replaced with a solid accent icon to reduce raster work.
 - Download/decrypt/encrypt progress notifications are coalesced to at most ~10 UI updates/second instead of rebuilding the whole shell for every progress event.
 - AES model encryption/decryption uses a native Linux OpenSSL fast path and the native `cryptography_flutter` AES-GCM implementation on Android/iOS/macOS, with 16 MiB work quanta and compatibility with older encrypted files.
+- Linux recipient envelopes support FIPS 203 ML-KEM-768 through an exactly pinned liboqs 0.14.0 runtime. The KEM secret is domain-separated with HKDF-SHA-256 and used only as an AES-256-GCM content key; malformed keys, envelopes, or any other liboqs runtime version fail closed. This API protects data encrypted to an ML-KEM public key; it does not retroactively make HTTPS, model downloads, local passphrase storage, or Android/iOS builds post-quantum secure.
 - The Settings page contains the model repair tools, key rotation, advanced checks, privacy control, and a long plain-language **Safety Tips** driving manual.
 - CPU inference keeps two logical cores free when possible and uses smaller batch/micro-batch sizes to avoid starving Flutter rendering.
 - Leaving the scanner paints the destination page before background model re-encryption begins, eliminating the apparent post-scan freeze.
@@ -115,6 +116,7 @@ To try the container's native Wayland path instead, run
 `NAZA_GDK_BACKEND=wayland ./run_linux.sh`.
 
 The first `flutter run` prepares the compatible local llama.cpp runtime before Flutter's native-assets step. Later builds reuse it.
+It also builds the `0.14.0` liboqs tag with only ML-KEM-768 enabled and bundles its shared library into the Linux application. The Dart binding independently checks `OQS_version()` and refuses to enable post-quantum operations unless it reports exactly `0.14.0`.
 
 Release build:
 
